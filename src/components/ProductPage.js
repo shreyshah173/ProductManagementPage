@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteProduct, addToCart, editProduct } from '../store';
-import { Box, Button, List, ListItem, ListItemText, Typography, TextField } from '@mui/material';
+import { Box, Button, List, ListItem, ListItemText, Typography, TextField, Grid } from '@mui/material';
 
 const ProductPage = () => {
   const products = useSelector(state => state.products);
@@ -22,7 +22,6 @@ const ProductPage = () => {
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
-    
   };
 
   const handleEdit = (product) => {
@@ -93,10 +92,16 @@ const ProductPage = () => {
         <List>
           {products.map(product => (
             <ListItem key={product.id}>
-              <ListItemText primary={`${product.name} - ${product.price}$`} secondary={product.description} />
-              <Button variant="contained" color="primary" onClick={() => handleAddToCart(product)}>Add to Cart</Button>
-              <Button variant="contained" color="secondary" onClick={() => handleEdit(product)} sx={{ ml: 2 }}>Edit</Button>
-              <Button variant="contained" color="error" onClick={() => handleDelete(product.id)} sx={{ ml: 2 }}>Delete</Button>
+              <Grid container spacing={2} alignItems="center">
+                <Grid item xs={12} sm={6} md={8}>
+                  <ListItemText primary={`${product.name} - ${product.price}$`} secondary={product.description} />
+                </Grid>
+                <Grid item xs={12} sm={6} md={4} container justifyContent="flex-end">
+                  <Button variant="contained" color="primary" onClick={() => handleAddToCart(product)} sx={{ m: 0.5 }}>Add to Cart</Button>
+                  <Button variant="contained" color="secondary" onClick={() => handleEdit(product)} sx={{ m: 0.5 }}>Edit</Button>
+                  <Button variant="contained" color="error" onClick={() => handleDelete(product.id)} sx={{ m: 0.5 }}>Delete</Button>
+                </Grid>
+              </Grid>
             </ListItem>
           ))}
         </List>
