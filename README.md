@@ -1,3 +1,17 @@
+# The deployed link for the project is 
+
+https://shreyshah173-product-management-page.vercel.app/
+
+# To clone and run this repository run the following commands in your command prompt
+
+git clone https://github.com/shreyshah173/ProductManagementPage.git
+
+cd ProductManagementPage
+
+npm install --force
+
+npm start
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
